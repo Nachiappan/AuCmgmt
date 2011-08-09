@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="" method="POST">
+{% csrf_token %}
+<table >
+<tr><td>Order {{order.id}}</td></tr>
+<tr><td>Customer: {{order.customer}}</td></tr>
+<tr><td>Phone Number: {{order.customer.phone_no}}</td></tr>
+<tr><td>Place: {{order.customer.place}}</td></tr>
+<tr><td>Order Date: {{order.order_date}}</td></tr>
+</table>
+<table border="1">
+
+<tr>
+<th>SNo.</th>
+<th>Item</th>
+<th>Item Type</th>
+<th>Item Description </th>
+<th>Prob. Del Date</th>
+<th>Delivery Status</th>
+<th>Diamond Weight</th>
+<th>Diamond Price </th>
+<th>Gold Weight</th>
+<th>Wastage</th>
+<th>Gold Price</th>
+<th>Making Charge </th>
+<th>Old Total</th>
+<th>Diamond Variation</th>
+<th>Gold Variation</th>
+<th>New Total</th>
+</tr>
+{%for i in item_order%}
+<tr>
+<td>{{i.id}}</td>
+<td>{{i.item}}</td>
+<td>{{i.item_type}}</td>
+<td>{{i.item_description}}</td>
+<td>{{i.delivery_date}}</td>
+<td>{{i.delivery_status}}</td>
+<td>{{i.Diamondweight}}</td>
+<td>{{i.Diamondprice}}</td>
+<td>{{i.Goldweight}}</td>
+<td>{{i.wastage}}</td>
+<td>{{i.goldprice}}</td>
+<td>{{i.making_charge}}</td>
+<td>{{i.totel_item_cost}}</td>
+<td><input type="text" name="diamond_variation" value="0"></td>
+<td><input type="text" name="gold_variation" value="0"></td>
+<td>{{i.new_total}}</td>
+</tr>
+{%endfor%}
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Grant Total</td>
+<td>{{order.total_cost}}</td>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Reduction</td>
+<td><input type="text" name="reduction" value="0"/></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>Net Total</td>
+<td>{{order.final_cost}}</td>
+</tr>
+</table>
+<input type ="submit" value ="Make Changes" name="Make Changes">
+</form>
+{% endblock %}

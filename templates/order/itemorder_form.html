@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="" method="POST">
+{% csrf_token %}
+<table>
+<tr><td>{{order.customer}}</td></tr>
+<tr><td>{{order.customer.phone_no}}</td></tr>
+<tr><td>{{order.customer.place}}</td></tr>
+</table>
+<table>
+{{ form }}
+<tr>
+<td colspan="2">
+
+<input type="hidden" name="add_item_id" value="{{order.id}}">
+<input type="hidden" name="add_item_quantity" value="1">
+
+<input type="submit" value="Save and Add another" name="Save and Add another" />
+</td>
+</tr>
+
+</table>
+<input type ="submit" value="Place order" name="Place order"/>
+</form>
+{% endblock %}

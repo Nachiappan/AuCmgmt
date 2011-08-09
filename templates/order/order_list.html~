@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="" method="POST">
+{% csrf_token %}
+{% if 'Customer' in c %}
+Customer: <input type="text" value ="customer" name="customer"/><br/>
+{%endif%}
+</form>
+{% endblock %}

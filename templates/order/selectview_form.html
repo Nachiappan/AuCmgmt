@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{%block head%}
+<script type="text/javascript">
+function date_filter(chkbox,group)
+{
+  document.getElementById("date").style.visibility = "visible"
+}
+function customer_filter()
+{
+    document.getElementById("cust_name").style.visibility = "visible"
+}
+
+function type_filter()
+{
+    document.getElementById("item_type").style.display = "block"
+}
+
+function finished_orders_filter()
+{
+   
+}
+function radio_select(id)
+{
+   var value=document.getElementById(id).value;
+}
+
+</script>
+
+{%endblock%}
+{% block content %}
+<form action="" method="GET">
+{% csrf_token %}
+
+<input type="checkbox" onClick = date_filter(this,'myGroup') value="Date" name="Date" />Date  <input type="date" id="date" style="visibility:hidden" value="2011-01-30" name="date"/><br/>
+<input type="checkbox" onClick=customer_filter() value= "Customer" name="Customer"/>Customer  
+<input type="text" id="cust_name" style="visibility:hidden" value="Enter customer name" name="cust_name"/><br/>
+<input type="checkbox" onClick=type_filter() value = "ItemType" name="ItemType" />Item Type<br/>
+<input type="radio" id="item_type" onClick=radio_select(id) name="item_type" value="open"/> Open<br/>
+<input type="radio" id="item_type1" onClick=radio_select(id) name="item_type" value="closed"/> Closed <br/>
+<input type="checkbox" onClick=finsished_orders_filter()value = "Finished Orders" name="FinishedOrders" />Finished Orders<br/>
+<input type="submit" value = "Get Order List" name="Get Order List"/>
+</form>
+{% endblock %}
